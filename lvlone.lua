@@ -68,7 +68,7 @@ function scene:createScene( event )
 	local start = widget.newButton{
 		label = "Start",
 		labelColor = { default={160}, ovet={230} },
-		fontSize = display.contentWidth * 0.06,
+		fontSize = display.contentWidth * 0.075,
 		defaultColor = { 0, 0, 0, 255 },
 		overColor = { 50, 50, 50, 255 },
 		strokeColor = { 255, 0, 0, 255 },
@@ -83,9 +83,9 @@ function scene:createScene( event )
 	start.y = display.contentHeight * 0.01
 	
 	local back = widget.newButton{
-		label = "Tillbaka",
+		label = "Back",
 		labelColor = { default={160}, ovet={230} },
-		fontSize = display.contentWidth * 0.06,
+		fontSize = display.contentWidth * 0.075,
 		defaultColor = { 0, 0, 0, 255 },
 		overColor = { 50, 50, 50, 255 },
 		strokeColor = { 255, 0, 0, 255 },
@@ -99,8 +99,9 @@ function scene:createScene( event )
 	back.x = display.contentWidth * 0.99
 	back.y = display.contentHeight * 0.01
 	
+	--[[
 	local restart = widget.newButton{
-		label = "Starta Om",
+		label = "Restart",
 		labelColor = { default={160}, ovet={230} },
 		fontSize = display.contentWidth * 0.06,
 		defaultColor = { 0, 0, 0, 255 },
@@ -115,6 +116,7 @@ function scene:createScene( event )
 	restart:setReferencePoint( display.TopCenterReferencePoint )
 	restart.x = display.contentWidth * 0.5
 	restart.y = display.contentHeight * 0.01
+	]]--
 	
 	--Lägger till cirkeln som ska röra sig genom banan
 	local cirkel = display.newCircle( 100, 200, 30 )
@@ -188,7 +190,7 @@ function scene:createScene( event )
 				if otherObj == character then
 					physics.pause()
 					
-					local alert = native.showAlert( "Grattis!", "Du klarade banan!", { "Starta om" , "Till menyn" }, alertBtn )
+					local alert = native.showAlert( "Grats!", "You made it!", { "Restart" , "Main menu" }, alertBtn )
 					
 					return true
 				end
@@ -207,7 +209,7 @@ function scene:createScene( event )
 				if otherObj == character then
 					
 					
-					local alert = native.showAlert( "Ops!", "Du åkte utanför banan!", { "Starta om" , "Till menyn" }, alertBtn )
+					local alert = native.showAlert( "Ops!", "Try again!", { "Restart" , "Main menu" }, alertBtn )
 					
 					return true
 				end
@@ -226,7 +228,7 @@ function scene:createScene( event )
 				if otherObj == character then
 					
 					
-					local alert = native.showAlert( "Ops!", "Du åkte utanför banan!", { "Starta om" , "Till menyn" }, alertBtn )
+					local alert = native.showAlert( "Ops!", "Try again!", { "Restart" , "Main menu" }, alertBtn )
 					
 					return true
 				end
@@ -245,7 +247,7 @@ function scene:createScene( event )
 				if otherObj == character then
 					
 					
-					local alert = native.showAlert( "Ops!", "Du åkte utanför banan!", { "Starta om" , "Till menyn" }, alertBtn )
+					local alert = native.showAlert( "Ops!", "Try again!", { "Restart" , "Main menu" }, alertBtn )
 					
 					return true
 				end
@@ -262,7 +264,7 @@ function scene:createScene( event )
 	
 	objrekt:setReferencePoint( display.CenterReferencePoint )
 	objrekt.x = display.contentWidth * 0.8
-	objrekt.y = display.contentHeight * 0.5
+	objrekt.y = display.contentHeight * 0.15
 	objrekt.strokeWidth = 2
 	objrekt:setFillColor( 0, 0, 0 )
 	objrekt:setStrokeColor( 0, 255, 0 )
@@ -318,7 +320,7 @@ function scene:createScene( event )
 	group:insert( pil )
 	group:insert( start )
 	group:insert( back )
-	group:insert( restart )
+	--group:insert( restart )
 	group:insert( cirkel )
 	group:insert( mark )
 	group:insert( objrekt )

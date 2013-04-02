@@ -26,6 +26,13 @@ local function onLvlThreeBtnRelease()
 	return true
 end
 
+local function onInfoPageBtnRelease()
+	
+	storyboard.gotoScene( "scrollView", "fade", 300 )
+	
+	return true
+end
+
 function scene:createScene( event )
 	
 	local group = self.view
@@ -34,15 +41,21 @@ function scene:createScene( event )
 	bg:setReferencePoint( display.TopLeftReferencePoint )
 	bg.x, bg.y = 0, 0
 	
-	local titel = display.newText( "Studsande Cirkel", display.contentWidth, display.contentHeight, native.systemFont, 50 )
+	local titel = display.newText( "Bouncing Circle", display.contentWidth, display.contentHeight, native.systemFont, 50 )
 	titel:setReferencePoint( display.TopLeftReferencePoint )
-	titel.x = display.contentWidth * 0.01
+	titel.x = display.contentWidth * 0.05
 	titel.y = display.contentHeight * 0.03
-	titel:setTextColor( 100, 100, 100 )
+	titel:setTextColor( 150, 150, 150 )
+	
+	local daGame = display.newText( "(the Game!)", display.contentWidth, display.contentHeight, native.systemFont, 50 )
+	daGame:setReferencePoint( display.TopLeftReferencePoint )
+	daGame.x = display.contentWidth * 0.05
+	daGame.y = display.contentHeight * 0.09
+	daGame:setTextColor( 0, 200, 0 )
 	
 	local lvlOne = widget.newButton{
 		label="Level 1",
-		labelColor = { default={160}, ovet={230} },
+		labelColor = { default={160}, over={230} },
 		fontSize = 45,
 		defaultColor = { 0, 0, 0, 255 },
 		overColor = { 50, 50, 50, 255 },
@@ -53,12 +66,12 @@ function scene:createScene( event )
 		onRelease = onLvlOneBtnRelease
 	}
 	lvlOne:setReferencePoint( display.LeftReferencePoint )
-	lvlOne.x = display.contentWidth * 0.01
+	lvlOne.x = display.contentWidth * 0.05
 	lvlOne.y = display.contentHeight - 500
 	
 	local lvlTwo = widget.newButton{
 		label="Level 2",
-		labelColor = { default={160}, ovet={230} },
+		labelColor = { default={160}, over={230} },
 		fontSize = 45,
 		defaultColor = { 0, 0, 0, 255 },
 		overColor = { 50, 50, 50, 255 },
@@ -69,12 +82,12 @@ function scene:createScene( event )
 		onRelease = onLvlTwoBtnRelease
 	}
 	lvlTwo:setReferencePoint( display.LeftReferencePoint )
-	lvlTwo.x = display.contentWidth * 0.01
+	lvlTwo.x = display.contentWidth * 0.05
 	lvlTwo.y = display.contentHeight - 425
 	
 	local lvlThree = widget.newButton{
 		label="Level 3",
-		labelColor = { default={160}, ovet={230} },
+		labelColor = { default={160}, over={230} },
 		fontSize = 45,
 		defaultColor = { 0, 0, 0, 255 },
 		overColor = { 50, 50, 50, 255 },
@@ -85,14 +98,32 @@ function scene:createScene( event )
 		onRelease = onLvlThreeBtnRelease
 	}
 	lvlThree:setReferencePoint( display.LeftReferencePoint )
-	lvlThree.x = display.contentWidth * 0.01
+	lvlThree.x = display.contentWidth * 0.05
 	lvlThree.y = display.contentHeight - 349
+	
+	local infoPage = widget.newButton{
+		label = "Info",
+		labelColor = { default = { 160 }, over = { 230 } },
+		fontSize = 45,
+		defaultColor = { 0, 0, 0, 255 },
+		overColor = { 50, 50, 50, 255 },
+		strokeColor = { 255, 0, 0, 255 },
+		strokeWidth = 3,
+		width=200, height=60,
+		cornerRadius = 0,
+		onRelease = onInfoPageBtnRelease
+	}
+	infoPage:setReferencePoint( display.RightReferencePoint )
+	infoPage.x = display.contentWidth * 0.05
+	infoPage.y = display.contentHeight * 0.9 
 	
 	group:insert( bg )
 	group:insert( titel )
+	group:insert( daGame )
 	group:insert( lvlOne )
 	group:insert( lvlTwo )
 	group:insert( lvlThree )
+	group:insert( infoPage )
 	
 end
 
